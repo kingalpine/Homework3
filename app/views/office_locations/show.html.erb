@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Street address:</strong>
+  <%= @office_location.street_address %>
+</p>
+
+<p>
+  <strong>Zip code:</strong>
+  <%= @office_location.zip_code %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @office_location.phone %>
+</p>
+
+<p>
+  <strong>Physician:</strong>
+  <%= @office_location.Physician_id %>
+</p>
+
+<%= link_to 'Edit', edit_office_location_path(@office_location) %> |
+<%= link_to 'Back', office_locations_path %>

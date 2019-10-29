@@ -1,0 +1,40 @@
+<%= form_with(model: physician, local: true) do |form| %>
+  <% if physician.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(physician.errors.count, "error") %> prohibited this physician from being saved:</h2>
+
+      <ul>
+        <% physician.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_for @physician do |f| %>
+	    <div class="field">
+		  <%= f.label :name %>
+		    <br/>
+		       <%= f.text_field :name %>
+		  </div>
+		    <div class="field">
+		       <%= f.label :specialty %>
+		    <br/>
+		       <%= f.text_field :specialty %>
+		  </div>
+			    <h3>Offices</h3>
+		    <div id='offices'>
+		        <%= f.fields_for :office_locations do |office| %>
+										        <%= render 'office_fields', :f => office %>
+										    <% end %>
+       <div class='links'>
+	      <%= link_to_add_association 'add office', f, :office_locations %>
+          </div>
+	    </div>
+     <%= f.submit 'Save' %>
+      <% end %>
+
+      <div class="actions">
+	      <%= form.submit %>
+      </div>
+      <% end %>
